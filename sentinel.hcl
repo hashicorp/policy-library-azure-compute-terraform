@@ -1,6 +1,6 @@
-policy "azure-compute-managed-disk-encryption-is-enabled" {
-  source = "./azure-compute-managed-disk-encryption-is-enabled.sentinel"
+policy "managed-disk-encryption-is-enabled" {
+  source = "./policies/managed-disk-encryption-is-enabled/managed-disk-encryption-is-enabled.sentinel"
 }
-policy "azure-compute-only-approved-extensions-are-installed" {
-  source = "./azure-compute-only-approved-extensions-are-installed.sentinel"
+policy "only-approved-extensions-are-installed" {
+  source = "./policies/only-approved-extensions-are-installed/only-approved-extensions-are-installed.sentinel"
 }
