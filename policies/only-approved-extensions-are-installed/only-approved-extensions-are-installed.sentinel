@@ -13,7 +13,7 @@ allVMExtensions = filter tfplan.resource_changes as _, resource_changes {
 			resource_changes.change.actions is ["update"])
 }
 
-print("CIS 7.4: Ensure that only approved extensions are installed")
+print("Ensure that only approved extensions are installed")
 
 deny_unsupported_virtual_machine_extensions = rule {
 	all allVMExtensions as _, extension {
