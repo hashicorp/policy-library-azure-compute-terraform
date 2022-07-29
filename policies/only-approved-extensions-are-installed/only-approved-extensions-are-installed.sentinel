@@ -1,6 +1,6 @@
 import "tfplan/v2" as tfplan
 
-deniedVMExtensionTypes = [
+param deniedVMExtensionTypes default [
 	"CustomScriptExtension",
 	"CustomScript",
 	"CustomScriptForLinux",
@@ -13,14 +13,23 @@ allVMExtensions = filter tfplan.resource_changes as _, resource_changes {
 			resource_changes.change.actions is ["update"])
 }
 
-print("Ensure that only approved extensions are installed")
-
 deny_unsupported_virtual_machine_extensions = rule {
 	all allVMExtensions as _, extension {
 		extension.change.after.type not in deniedVMExtensionTypes
 	}
 }
 
+// ------------------------------------------------------------
+// Name:        only-approved-extensions-are-installed.sentinel
+// Category:    Infrastructure (IaaS)
+// Provider:    hashicorp/azurerm
+// Resource:    azurerm_virtual_machine_extension
+// Check:       Ensure that VM Extension type is allowed
+// ------------------------------------------------------------
+// Ensure that all `azurerm_virtual_machine_extension` resources
+// in the Terraform Configuration only use an allowed extension
+// type.
+// ------------------------------------------------------------
 main = rule {
 	deny_unsupported_virtual_machine_extensions
 }
