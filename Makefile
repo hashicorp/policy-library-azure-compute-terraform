@@ -7,13 +7,18 @@ tests:
 format:
 	sentinel fmt -write=true $(shell find . -name "*.sentinel" -type f)
 
-structure:
-	mkdir -p policies/$(name)/test/$(name)
-	mkdir -p policies/$(name)/testdata
+generate:
+ifeq ($(strip $(name)),)
+	@echo flag needs an argument: name
+	@echo Usage: make generate name=deny-old-module-versions
+else
+	@mkdir -p policies/$(name)/test/$(name)
+	@mkdir -p policies/$(name)/testdata
+	@cp example/example.sentinel policies/$(name)/$(name).sentinel
+	@cp example/test/example/*.hcl policies/$(name)/test/$(name)
+	@cp example/testdata/*.sentinel policies/$(name)/testdata
+	@echo Policy written to policies/$(name)/$(name).sentinel
+	@echo Done.
+endif
 
-generate: structure
-	cp example/example.sentinel policies/$(name)/$(name).sentinel
-	cp example/test/example/*.hcl policies/$(name)/test/$(name)
-	cp example/testdata/*.sentinel policies/$(name)/testdata
-
-.PHONY: format test
+.PHONY: format tests
