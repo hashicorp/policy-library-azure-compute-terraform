@@ -7,6 +7,12 @@
 ## Overview
 Azure virtual machine extensions are small applications that run with administrative privileges on Azure virtual machines. These extensions could potentially access anything on a virtual machine and therefore only approved extensions should be used within an organizations Azure subscriptions.
 
+## Parameters
+The following parameter(s) can be supplied for the policy:
+| Name                   | Type | Default                                                            |
+|------------------------|------|--------------------------------------------------------------------|
+| deniedVMExtensionTypes | List | ["CustomScriptExtension", "CustomScript", "CustomScriptForLinux",] |
+
 ## Policy Result (Pass)
 ```shell
     trace:
