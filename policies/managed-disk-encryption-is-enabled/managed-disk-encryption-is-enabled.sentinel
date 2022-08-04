@@ -7,8 +7,6 @@ allManagedDisks = filter tfplan.resource_changes as _, resource_changes {
 			resource_changes.change.actions is ["update"])
 }
 
-print("Ensure that managed disks are encrypted")
-
 deny_undefined_encryption_settings = rule {
 	all allManagedDisks as _, disks {
 		keys(disks.change.after) contains "encryption_settings" and
@@ -24,6 +22,17 @@ deny_unencrypted_managed_disk = rule when deny_undefined_encryption_settings is 
 	}
 }
 
+// --------------------------------------------------------
+// Name:        managed-disk-encryption-is-enabled.sentinel
+// Category:    Infrastructure (IaaS)
+// Provider:    hashicorp/azurerm
+// Resource:    azurerm_managed_disk
+// Check:       encryption_settings.enabled is false
+// --------------------------------------------------------
+// Ensure that all `azurerm_managed_disk` resources in the
+// Terraform Configuration contain an `encryption_settings`
+// block and that `enabled` is set to 'true'.
+// --------------------------------------------------------
 main = rule {
 	deny_undefined_encryption_settings and
 	deny_unencrypted_managed_disk
