@@ -16,24 +16,16 @@ The following parameter(s) can be supplied for the policy:
 ## Policy Result (Pass)
 ```shell
     trace:
-      only-approved-extensions-are-installed.sentinel:35:1 - Rule "main"
+      only-approved-extensions-are-installed.sentinel:24:1 - Rule "main"
         Description:
-          ------------------------------------------------------------
-          Name:        only-approved-extensions-are-installed.sentinel
-          Category:    Infrastructure (IaaS)
-          Provider:    hashicorp/azurerm
-          Resource:    azurerm_virtual_machine_extension
-          Check:       Ensure that VM Extension type is allowed
-          ------------------------------------------------------------
-          Ensure that all `azurerm_virtual_machine_extension` resources
-          in the Terraform Configuration only use an allowed extension
-          type.
-          ------------------------------------------------------------
+          Ensure that all `azurerm_virtual_machine_extension` resources in
+          the Terraform
+          configuration only use an allowed extension type.
 
         Value:
           true
 
-      only-approved-extensions-are-installed.sentinel:18:1 - Rule "deny_unsupported_virtual_machine_extensions"
+      only-approved-extensions-are-installed.sentinel:16:1 - Rule "deny_unsupported_virtual_machine_extensions"
         Value:
           true
 ```

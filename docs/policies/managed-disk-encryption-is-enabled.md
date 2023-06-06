@@ -10,19 +10,12 @@ Encrypting the VM's OS and data disks ensures that all content is fully unrecove
 ## Policy Result (Pass)
 ```shell
     trace:
-      managed-disk-encryption-is-enabled.sentinel:36:1 - Rule "main"
+      managed-disk-encryption-is-enabled.sentinel:28:1 - Rule "main"
         Description:
-          --------------------------------------------------------
-          Name:        managed-disk-encryption-is-enabled.sentinel
-          Category:    Infrastructure (IaaS)
-          Provider:    hashicorp/azurerm
-          Resource:    azurerm_managed_disk
-          Check:       encryption_settings.enabled is false
-          --------------------------------------------------------
           Ensure that all `azurerm_managed_disk` resources in the
-          Terraform Configuration contain an `encryption_settings`
-          block and that `enabled` is set to 'true'.
-          --------------------------------------------------------
+          Terraform
+          configuration contains an `encryption_settings` block and that
+          `enabled` is set to 'true'.
 
         Value:
           true
