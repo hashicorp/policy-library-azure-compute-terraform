@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 resource_changes = {
 	"azurerm_managed_disk.secure": {
 		"address": "azurerm_managed_disk.secure",

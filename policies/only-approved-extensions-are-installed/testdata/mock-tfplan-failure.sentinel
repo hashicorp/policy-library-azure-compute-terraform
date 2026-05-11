@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 resource_changes = {
 	"azurerm_virtual_machine_extension.customscriptextension": {
 		"address": "azurerm_virtual_machine_extension.customscriptextension",
